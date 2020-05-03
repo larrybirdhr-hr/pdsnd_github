@@ -1,3 +1,6 @@
+### The project is created on April 27, 2020 
+### By Rui Huang, huangr76@gmail.com
+
 import time
 import pandas as pd
 import numpy as np
@@ -29,7 +32,7 @@ def get_filters():
 
 
     # get user input for month (all, january, february, ... , june)
-    # user can input January, February, March, April, May, June, or 1, 2, 3, 4, 5,6       
+    # user can input January, February, March, April, May, June, or 1, 2, 3, 4, 5,6
     months = ['January', 'February', 'March', 'April', 'May', 'June']
     months_n = ['1', '2', '3', '4', '5', '6']
     while True:
@@ -48,7 +51,7 @@ def get_filters():
 
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    # user can input Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or 
+    # user can input Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or
     #        Mo, Tu, We, Th, Fr, Sa, Su
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     days_s = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
@@ -58,7 +61,7 @@ def get_filters():
             day = days[days_s.index(day.title())]
             break
         elif day.title() in days:
-            day = day.title() 
+            day = day.title()
             break
         elif day == 'all' or day == 'All':
             day ='all'
@@ -82,11 +85,11 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
@@ -102,7 +105,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month.lower())+1
-    
+
         # filter by month to create the new dataframe
         df = df[df['month'] ==month]
 
@@ -159,7 +162,7 @@ def station_stats(df):
     print('The most frequent combination of start station and end station trip is {}'.format(df['station_pair'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40) 
+    print('-'*40)
 
 
 def trip_duration_stats(df):
@@ -191,7 +194,7 @@ def user_stats(df, city):
         print('The count of user type {} is {}'.format(i, user_types[i]))
 
 
-    # Display counts of gender for chicago and new york city, 
+    # Display counts of gender for chicago and new york city,
     # For washington, we display no gender or birth year information
     if city in ['chicago', 'new york city']:
         gender_counts = df['Gender'].value_counts()
@@ -223,7 +226,7 @@ def main():
         ## take the user input, it takes yes or y anything else would be considered as no
         ## it shows the raw data 5 entries every time, until user input no or n.
         raw = input('Would you like to see raw data \n')
-        
+
         if raw.lower()=='yes' or raw.lower()=='y':
             df.drop(columns = ['station_pair', 'month', 'day_of_week','hour'], inplace = True)
             i = 5
@@ -238,7 +241,7 @@ def main():
                     break
             ## print the last piece of data that is not part of the 5 segment
             print(df.iloc[i-5:])
-    
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
