@@ -1,5 +1,6 @@
-### The project is created on April 27, 2020 
+### The project is created on April 27, 2020
 ### By Rui Huang, huangr76@gmail.com
+### This project is for Udacity programing for data science naodegree
 
 import time
 import pandas as pd
