@@ -197,6 +197,7 @@ def user_stats(df, city):
         gender_counts = df['Gender'].value_counts()
         for i in gender_counts.index:
             print('The count of gender {} is {}'.format(i, gender_counts[i]))
+        ## Display the birth years for the selected city
         print('The earliest year of birth is {}'.format(df['Birth Year'].min()))
         print('The most recent year of birth is {}'.format(df['Birth Year'].max()))
         print('The most common year of birth is {}'.format(df['Birth Year'].mode()[0]))
