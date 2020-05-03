@@ -83,10 +83,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     
-    CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
-              'washington': 'washington.csv' }
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
