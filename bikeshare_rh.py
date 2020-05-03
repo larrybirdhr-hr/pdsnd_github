@@ -136,7 +136,7 @@ def time_stats(df):
     # display the most common start hour
     print('The most common start hour is {}'.format(df['hour'].mode()[0]))
 
-
+    
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -230,6 +230,8 @@ def main():
             i = 5
             print(df.iloc[i-5:i])
             i+=5
+            ## start from i = 5, and continue display the raw data. If the last segment has less than 5, then display 
+            ## the rest
             while i<=len(df):
                 see_more = input('Would you like to see more?\n')
                 if see_more.lower()!='no' and see_more.lower()!='n':
